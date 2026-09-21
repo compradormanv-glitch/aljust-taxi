@@ -1,73 +1,80 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#ffffff">
-  <title>Al.just Táxi</title>
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffffff">
+<title>Al.just Táxi</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="topbar">
-    <div class="logo" id="logo">AL<span>.just</span></div>
-    <div class="profile">👤</div>
-  </header>
+<header class="topbar">
+  <div class="logo">AL<span>.just</span><small> Táxi</small></div>
+  <div class="profile">👤</div>
+</header>
+<main>
+<section class="hero">
+  <p class="small">AL.JUST TÁXI</p>
+  <h1>Para onde vamos?</h1>
+  <p class="muted">Escolha o ponto de partida e o destino no mapa.</p>
+</section>
 
-  <main>
-    <section class="hero">
-      <p class="small">Al.just Táxi</p>
-      <h1>Para onde vamos?</h1>
-      <p class="muted">Peça o seu táxi de forma simples e rápida.</p>
-    </section>
+<section class="card">
+<label>📍 Local de partida</label>
+<input id="pickup" type="text" placeholder="Ex.: Talatona, Luanda">
+<label>🎯 Destino</label>
+<input id="destination" type="text" placeholder="Clique no mapa ou escreva o destino">
 
-    <section class="card">
-      <label>📍 Local de partida</label>
-      <input id="pickup" type="text" placeholder="Ex.: Talatona, Luanda">
+<div class="map-wrap">
+  <div id="map"></div>
+  <button class="map-locate" id="locationBtn">📍 Minha localização</button>
+</div>
+<p class="hint">Toque/click no mapa para marcar o destino.</p>
 
-      <label>🎯 Destino</label>
-      <input id="destination" type="text" placeholder="Ex.: Maianga, Luanda">
+<div class="row">
+  <div><label>👥 Passageiros</label>
+    <select id="passengers"><option>1</option><option>2</option><option>3</option><option>4</option></select>
+  </div>
+  <div><label>🚕 Tipo</label>
+    <select id="carType"><option value="normal">Al.just Normal</option><option value="confort">Al.just Confort</option></select>
+  </div>
+</div>
 
-      <button class="location-btn" id="locationBtn">📍 Usar minha localização</button>
+<div class="estimate">
+  <div><span class="estimate-label">Distância aproximada</span><strong id="distance">-- km</strong></div>
+  <div class="price-box"><span class="estimate-label">Estimativa</span><strong id="price">-- Kz</strong></div>
+</div>
 
-      <div class="row">
-        <div>
-          <label>👥 Passageiros</label>
-          <select id="passengers">
-            <option>1</option><option>2</option><option>3</option><option>4</option>
-          </select>
-        </div>
-        <div>
-          <label>🚕 Tipo</label>
-          <select id="carType">
-            <option>Al.just Normal</option>
-            <option>Al.just Confort</option>
-          </select>
-        </div>
-      </div>
+<button class="primary" id="requestBtn">🚕 Pedir táxi</button>
+<p id="message" class="message"></p>
+</section>
 
-      <div class="estimate">
-        <span>Estimativa</span>
-        <strong id="price">-- Kz</strong>
-      </div>
+<section class="drivers card">
+<div class="section-title"><h2>Motoristas</h2><span class="online">● online</span></div>
+<div class="driver">
+  <div class="avatar">👨🏽‍✈️</div>
+  <div class="driver-info"><strong>Motorista Al.just</strong><span>Disponível para receber pedidos</span></div>
+  <span class="status">Disponível</span>
+</div>
+<p class="demo-note">Nesta versão, a ligação real entre cliente e motorista ainda será adicionada.</p>
+</section>
 
-      <button class="primary" id="requestBtn">🚕 Pedir táxi</button>
-      <p id="message" class="message"></p>
-    </section>
+<section class="quick">
+<div class="quick-card"><b>📋</b><span>Minhas corridas</span></div>
+<div class="quick-card"><b>👤</b><span>Minha conta</span></div>
+<div class="quick-card"><b>❓</b><span>Ajuda</span></div>
+</section>
+</main>
 
-    <section class="quick">
-      <div class="quick-card"><b>📋</b><span>Minhas corridas</span></div>
-      <div class="quick-card"><b>👤</b><span>Minha conta</span></div>
-      <div class="quick-card"><b>❓</b><span>Ajuda</span></div>
-    </section>
-  </main>
+<nav class="bottom-nav">
+<a class="active">🏠<span>Início</span></a>
+<a>📋<span>Corridas</span></a>
+<a>👤<span>Conta</span></a>
+</nav>
 
-  <nav class="bottom-nav">
-    <a class="active">🏠<span>Início</span></a>
-    <a>📋<span>Corridas</span></a>
-    <a>👤<span>Conta</span></a>
-  </nav>
-
-  <script src="app.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
