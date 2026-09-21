@@ -2,7 +2,7 @@
 <html lang="pt">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#ffffff">
 <title>Al.just Táxi</title>
 <link rel="manifest" href="manifest.json">
@@ -12,69 +12,100 @@
 <body>
 <header class="topbar">
   <div class="logo">AL<span>.just</span><small> Táxi</small></div>
-  <div class="profile">👤</div>
+  <button id="modeBtn" class="mode-btn">👨🏽‍✈️ Motorista</button>
 </header>
+
 <main>
-<section class="hero">
-  <p class="small">AL.JUST TÁXI</p>
-  <h1>Para onde vamos?</h1>
-  <p class="muted">Escolha o ponto de partida e o destino no mapa.</p>
-</section>
+  <section class="hero">
+    <p class="small">AL.JUST TÁXI</p>
+    <h1 id="pageTitle">Pedir uma corrida</h1>
+    <p id="pageSubtitle" class="muted">Escolha o local de partida e o destino.</p>
+  </section>
 
-<section class="card">
-<label>📍 Local de partida</label>
-<input id="pickup" type="text" placeholder="Ex.: Talatona, Luanda">
-<label>🎯 Destino</label>
-<input id="destination" type="text" placeholder="Clique no mapa ou escreva o destino">
+  <section id="customerPanel" class="card">
+    <label>👤 Seu nome</label>
+    <input id="customerName" placeholder="Ex.: Alberto">
 
-<div class="map-wrap">
-  <div id="map"></div>
-  <button class="map-locate" id="locationBtn">📍 Minha localização</button>
-</div>
-<p class="hint">Toque/click no mapa para marcar o destino.</p>
+    <label>📍 Local de partida</label>
+    <input id="pickupText" placeholder="Clique em Minha localização">
 
-<div class="row">
-  <div><label>👥 Passageiros</label>
-    <select id="passengers"><option>1</option><option>2</option><option>3</option><option>4</option></select>
-  </div>
-  <div><label>🚕 Tipo</label>
-    <select id="carType"><option value="normal">Al.just Normal</option><option value="confort">Al.just Confort</option></select>
-  </div>
-</div>
+    <label>🎯 Destino</label>
+    <input id="destinationText" placeholder="Toque no mapa para marcar">
 
-<div class="estimate">
-  <div><span class="estimate-label">Distância aproximada</span><strong id="distance">-- km</strong></div>
-  <div class="price-box"><span class="estimate-label">Estimativa</span><strong id="price">-- Kz</strong></div>
-</div>
+    <div class="map-wrap">
+      <div id="map"></div>
+      <button id="locationBtn" class="map-locate">📍 Minha localização</button>
+    </div>
+    <p class="hint">A localização do cliente e o destino são guardados no pedido.</p>
 
-<button class="primary" id="requestBtn">🚕 Pedir táxi</button>
-<p id="message" class="message"></p>
-</section>
+    <div class="row">
+      <div>
+        <label>👥 Passageiros</label>
+        <select id="passengers">
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3">3</option><option value="4">4</option>
+        </select>
+      </div>
+      <div>
+        <label>🚕 Tipo</label>
+        <select id="carType">
+          <option value="normal">Al.just Normal</option>
+          <option value="confort">Al.just Confort</option>
+        </select>
+      </div>
+    </div>
 
-<section class="drivers card">
-<div class="section-title"><h2>Motoristas</h2><span class="online">● online</span></div>
-<div class="driver">
-  <div class="avatar">👨🏽‍✈️</div>
-  <div class="driver-info"><strong>Motorista Al.just</strong><span>Disponível para receber pedidos</span></div>
-  <span class="status">Disponível</span>
-</div>
-<p class="demo-note">Nesta versão, a ligação real entre cliente e motorista ainda será adicionada.</p>
-</section>
+    <div class="estimate">
+      <div><span>Distância</span><strong id="distance">-- km</strong></div>
+      <div class="right"><span>Estimativa</span><strong id="price">-- Kz</strong></div>
+    </div>
 
-<section class="quick">
-<div class="quick-card"><b>📋</b><span>Minhas corridas</span></div>
-<div class="quick-card"><b>👤</b><span>Minha conta</span></div>
-<div class="quick-card"><b>❓</b><span>Ajuda</span></div>
-</section>
+    <button id="requestBtn" class="primary">🚕 Pedir táxi</button>
+    <div id="rideStatus" class="status-box hidden"></div>
+    <p id="customerMessage" class="message"></p>
+  </section>
+
+  <section id="driverPanel" class="card hidden">
+    <div class="section-title">
+      <h2>Painel do motorista</h2>
+      <span id="driverConnection" class="offline">● offline</span>
+    </div>
+
+    <label>👨🏽‍✈️ Nome do motorista</label>
+    <input id="driverName" placeholder="Ex.: João">
+
+    <label>📞 Telefone</label>
+    <input id="driverPhone" placeholder="Ex.: 926 000 000">
+
+    <div class="row">
+      <div>
+        <label>🚘 Viatura</label>
+        <input id="driverCar" placeholder="Ex.: Toyota Corolla">
+      </div>
+      <div>
+        <label>🔢 Matrícula</label>
+        <input id="driverPlate" placeholder="Ex.: LD-00-00-AA">
+      </div>
+    </div>
+
+    <button id="driverOnlineBtn" class="primary secondary">🟢 Ficar online</button>
+
+    <div id="driverRequests" class="requests">
+      <div class="empty">Entre online para receber pedidos dos clientes.</div>
+    </div>
+    <p id="driverMessage" class="message"></p>
+  </section>
 </main>
 
 <nav class="bottom-nav">
-<a class="active">🏠<span>Início</span></a>
-<a>📋<span>Corridas</span></a>
-<a>👤<span>Conta</span></a>
+  <button class="active">🏠<span>Início</span></button>
+  <button id="bottomMode">👨🏽‍✈️<span>Motorista</span></button>
+  <button>👤<span>Conta</span></button>
 </nav>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="config.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

@@ -1,0 +1,25 @@
+AL.JUST TÁXI — COMO LIGAR O SUPABASE
+
+1) Abra o seu projeto AL.JUST no Supabase.
+2) Vá a SQL Editor.
+3) Abra o ficheiro supabase.sql deste ZIP e copie tudo para o SQL Editor.
+4) Execute o SQL.
+5) Vá a Settings > API Keys.
+6) Copie o Project URL.
+7) Copie a PUBLISHABLE KEY (começa por sb_publishable_...).
+8) Abra config.js e troque:
+   COLE_AQUI_O_PROJECT_URL
+   COLE_AQUI_A_PUBLISHABLE_KEY
+9) Não coloque a Secret Key / service_role no site.
+10) Envie novamente os ficheiros para o GitHub Pages.
+
+Teste:
+- No telemóvel/computador A, abra o site como Passageiro.
+- Preencha o nome, escolha partida e destino e toque "Pedir táxi".
+- No telemóvel/computador B, abra o mesmo site e entre em "Motorista".
+- Preencha os dados e fique online.
+- O pedido deve aparecer no painel do motorista em tempo real.
+- Ao aceitar, o estado muda no lado do cliente.
+
+NOTA DE SEGURANÇA:
+Esta primeira ligação usa regras anónimas para testar o fluxo. Antes de operar comercialmente, devemos colocar login/autenticação do motorista, permissões por utilizador, proteção contra falsificação de corridas e políticas RLS mais restritas.
