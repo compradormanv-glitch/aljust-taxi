@@ -1,6 +1,6 @@
-// COLOQUE AQUI os dados do seu projeto Supabase.
-// Use o Project URL e a PUBLISHABLE KEY (sb_publishable_...).
-// NÃO coloque aqui uma secret key/service_role.
+// Configuração do Supabase — Al.just Táxi
+// Publishable key: segura para uso no navegador.
+// NÃO coloque uma Secret Key neste ficheiro.
 
-window.ALJUST_SUPABASE_URL = "COLE_AQUI_O_PROJECT_URL";
-window.ALJUST_SUPABASE_KEY = "COLE_AQUI_A_PUBLISHABLE_KEY";
+window.ALJUST_SUPABASE_URL = "https://myzlvhpvolpekesibvjz.supabase.co";
+window.ALJUST_SUPABASE_KEY = "sb_publishable_nEJzJXHsqdq3QLr99WNKSA_OlF6WVKi";
