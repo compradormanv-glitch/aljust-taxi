@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <title>Al.just Táxi</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo" id="logo">AL<span>.just</span></div>
+    <div class="profile">👤</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="small">Al.just Táxi</p>
+      <h1>Para onde vamos?</h1>
+      <p class="muted">Peça o seu táxi de forma simples e rápida.</p>
+    </section>
+
+    <section class="card">
+      <label>📍 Local de partida</label>
+      <input id="pickup" type="text" placeholder="Ex.: Talatona, Luanda">
+
+      <label>🎯 Destino</label>
+      <input id="destination" type="text" placeholder="Ex.: Maianga, Luanda">
+
+      <button class="location-btn" id="locationBtn">📍 Usar minha localização</button>
+
+      <div class="row">
+        <div>
+          <label>👥 Passageiros</label>
+          <select id="passengers">
+            <option>1</option><option>2</option><option>3</option><option>4</option>
+          </select>
+        </div>
+        <div>
+          <label>🚕 Tipo</label>
+          <select id="carType">
+            <option>Al.just Normal</option>
+            <option>Al.just Confort</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="estimate">
+        <span>Estimativa</span>
+        <strong id="price">-- Kz</strong>
+      </div>
+
+      <button class="primary" id="requestBtn">🚕 Pedir táxi</button>
+      <p id="message" class="message"></p>
+    </section>
+
+    <section class="quick">
+      <div class="quick-card"><b>📋</b><span>Minhas corridas</span></div>
+      <div class="quick-card"><b>👤</b><span>Minha conta</span></div>
+      <div class="quick-card"><b>❓</b><span>Ajuda</span></div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav">
+    <a class="active">🏠<span>Início</span></a>
+    <a>📋<span>Corridas</span></a>
+    <a>👤<span>Conta</span></a>
+  </nav>
+
+  <script src="app.js"></script>
+</body>
+</html>
