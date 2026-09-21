@@ -300,3 +300,25 @@ function startDriverLocation(){
 }
 function escapeHtml(v){return String(v).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]));}
 if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(()=>{});
+
+
+let deferredInstallPrompt = null;
+const installBtn = document.getElementById("installBtn");
+if (installBtn) {
+  window.addEventListener("beforeinstallprompt", (event) => {
+    event.preventDefault();
+    deferredInstallPrompt = event;
+    installBtn.classList.remove("hidden");
+  });
+  installBtn.addEventListener("click", async () => {
+    if (!deferredInstallPrompt) return;
+    deferredInstallPrompt.prompt();
+    await deferredInstallPrompt.userChoice;
+    deferredInstallPrompt = null;
+    installBtn.classList.add("hidden");
+  });
+  window.addEventListener("appinstalled", () => {
+    installBtn.classList.add("hidden");
+    deferredInstallPrompt = null;
+  });
+}
